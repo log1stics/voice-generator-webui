@@ -1,0 +1,6 @@
+venv/
+dev/
+**/__pycache__/
+tts/models/*txt
+tts/models/*pth
+vc/models/*
