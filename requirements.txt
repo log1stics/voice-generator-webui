@@ -7,3 +7,4 @@ fairseq
 praat-parselmouth
 faiss-cpu
 pyworld
+numpy>=1.23.5

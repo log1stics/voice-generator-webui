@@ -30,7 +30,13 @@ git clone https://github.com/log1stics/voice-generator-webui
 ```
 cd voice-generator-webui
 pip install -r requirements.txt
-python3 webui.py
+cd tts/monotonic_align
+python setup.py build_ext --inplace
+```
+起動
+```
+cd ../../ # webui.pyの場所へ移動
+python webui.py
 ```
 
 ## RVCモデルの追加
