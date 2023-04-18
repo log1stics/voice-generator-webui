@@ -4,6 +4,12 @@ sys.path.append('ui')
 
 import gradio as gr
 from ui import themes, generate, vc_batch, train, settings
+import argparse
+
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--colab", action="store_true", help="Launch in colab")
+iscolab = parser.parse_args().colab
 
 
 seafoam = themes.Seafoam()
@@ -22,4 +28,8 @@ with gr.Blocks(theme=seafoam) as app:
         vc_batch.ui()
         # train.ui()
 
-app.launch()
+
+if iscolab:
+  app.queue().launch(share=True)
+else:
+  app.queue().launch()
