@@ -2,7 +2,7 @@
 VITS、RVCを用いた多言語、多話者対応のアクセント調整可能な音声生成ツール
 <div align="center">
 
-[![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://github.com/log1stics/voice-generator-webui/blob/main/colab.ipynb)
+[![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/github/log1stics/voice-generator-webui/blob/main/colab.ipynb)
 
 </div>
 
