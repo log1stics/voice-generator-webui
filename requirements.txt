@@ -1,0 +1,9 @@
+gradio
+pyopenjtalk
+Unidecode
+phonemizer
+scipy
+fairseq
+praat-parselmouth
+faiss-cpu
+pyworld

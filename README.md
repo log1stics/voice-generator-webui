@@ -1,54 +1,61 @@
 # Voice Generator web UI
-日本語は[こちら](docs/README_ja.md)
-A Multi-speaker, multilingual speech generation tool.
+VITS、RVCを用いた多言語、多話者対応のアクセント調整可能な音声生成ツール
 
-![](screenshot.png)
+![](docs/Screenshot.png)
 
-## Features
-
-- Speech synthesis for 209 speakers (100 Japanese / 109 English)
-- Accent and phoneme editing functions
-- Voice conversion by RVC
-- RVC model creation with a few clicks using the Colab environment
-- Batch voice conversion by RVC
+## 機能
+- 209人分の音声合成(日本語話者 100人 / 英語話者 109人)
+- アクセントや音素の編集機能
+- RVCによる音声変換
+- Colab環境を利用した数クリックで学習可能なRVCモデル作成
+- RVCによるバッチ音声変換
 
 
 
-## Installation and Running
-[Python 3.10.6](https://www.python.org/downloads/windows/)
+## インストール
+動作確認済み環境
+- Ubuntu 22
+- Python 3.10.6
+- CUDA 11.7
 
+
+CUDA版PyTorchが必要
+```
+pip install torch==1.13.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
+```
 ```
 git clone https://github.com/log1stics/voice-generator-webui
 ```
 
 ```
 cd voice-generator-webui
-pip install requirement.txt
+pip install -r requirements.txt
 python3 webui.py
 ```
 
-## Add RVC model
+## RVCモデルの追加
 
-For example, if you want to handle an RVC training model called EXAMPLE_MODEL.pth, place it as follows
+例えばEXAMPLE_MODEL.pthというRVCの学習モデルを扱いたい場合、以下のようにpthファイルを配置した後、webuiを再起動してください
 ```bash
 vc/
 └── models/
     └── EXAMPLE_MODEL/
-        ├── EXAMPLE_MODEL.pth # file name should be the same as the directory name
-        ├── added.index # not necessary (name is fixed to added.index)
-        └── total_fea.npy # not necessary (name is fixed to added.index)
+        ├── EXAMPLE_MODEL.pth # (ファイル名はディレクトリ名と同じにする)
+        ├── added.index # なくても可 (名前はadded.index固定)
+        └── total_fea.npy # なくても可 (名前はtotal_fea.npy固定)
 ```
 
 
-
-## Contributing
+## For developers
 Here's how to add code to this repo: [Contributing](docs/add_vits.md)
 
 
-## Credits
+## クレジット
 
 - [VITS](https://github.com/jaywalnut310/vits)
 - [Retrieval-based-Voice-Conversion-WebUI](https://github.com/liujing04/Retrieval-based-Voice-Conversion-WebUI)
 - [pyopenjtalk](https://github.com/r9y9/pyopenjtalk)
+
+### dataset
 - [JSUT](https://sites.google.com/site/shinnosuketakamichi/publication/jsut)
 - [VCTK](https://datashare.ed.ac.uk/handle/10283/2950)

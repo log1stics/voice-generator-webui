@@ -21,6 +21,9 @@ def download_file(url, save_directory, file_name=None):
 
 
 def get_vits_model(model_name):
+    # This is not vits model, but needed for vc
+    if not os.path.exists(f'vc/models/hubert_base.pt'):
+        download_file(f'https://huggingface.co/lj1995/VoiceConversionWebUI/resolve/main/hubert_base.pt', 'vc/models')
     if not os.path.exists(f'tts/models/{model_name}.pth'):
         download_file(f'https://huggingface.co/jkzfs/VITS_models/resolve/main/{model_name}_speakers.txt', 'tts/models')
         download_file(f'https://huggingface.co/jkzfs/VITS_models/resolve/main/{model_name}.pth', 'tts/models')

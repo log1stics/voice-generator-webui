@@ -13,6 +13,6 @@ with gr.Blocks(theme=seafoam) as app:
     with gr.Tabs():
         generate.ui()
         vc_batch.ui()
-        train.ui()
+        # train.ui()
 
 app.launch()

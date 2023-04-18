@@ -23,6 +23,7 @@ with open('tts/models/model_list.json', 'r') as file:
 
 vc_models=['No conversion']
 # load rvc model names
+os.makedirs('vc/models', exist_ok=True)
 vc_model_root = 'vc/models'
 vc_models.extend([d for d in os.listdir(vc_model_root) if os.path.isdir(os.path.join(vc_model_root, d))])
 
