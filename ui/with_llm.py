@@ -63,8 +63,18 @@ def generate(llm_output, selected_presets, silence_duration):
     return generate_dialogues(dialogues, selected_presets, llm_output, silence_duration)
 
 
+top = '''
+  <div align="center">
+  See here for instructions on how to use it.
+
+  [English](https://github.com/log1stics/voice-generator-webui/blob/main/docs/how_llm.md) | [日本語](https://github.com/log1stics/voice-generator-webui/blob/main/docs/ja/how_llm.md)
+
+  </div>
+'''
+
 def ui():
     with gr.TabItem('With LLM'):
+        gr.Markdown(top)
         with gr.Row():
             with gr.Column():
                 presets_dropdown = gr.Dropdown(choices=list(presets.keys()), label="Presets", multiselect=True)

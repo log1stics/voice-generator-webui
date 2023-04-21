@@ -3,6 +3,8 @@ A Multi-speaker, multilingual speech generation tool.
 
 <div align="center">
 
+日本語は[こちら](docs/ja/README.md)
+
 [![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/github/log1stics/voice-generator-webui/blob/main/colab.ipynb)
 
 </div>
