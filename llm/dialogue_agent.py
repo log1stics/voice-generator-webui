@@ -10,7 +10,7 @@ import template
 
 
 class CustomOutputParser(AgentOutputParser):
-    
+
     def parse(self, llm_output: str) -> Union[AgentAction, AgentFinish]:
         # Check if agent should finish
         if "Final Answer:" in llm_output:
@@ -27,7 +27,6 @@ class CustomOutputParser(AgentOutputParser):
         dialogues = {}
 
         if matches:
-            # print(matches)
             for n, match in enumerate(matches):
                 speaker, dialogue = match
                 if speaker not in dialogues:
@@ -36,24 +35,13 @@ class CustomOutputParser(AgentOutputParser):
 
         else:
             raise ValueError(f"Could not parse LLM output: `{llm_output}`")
-        
-        # print(dialogues)
+
         return AgentFinish(
-                # Return values is generally always a dictionary with a single `output` key
-                # It is not recommended to try anything else at the moment :)
-                return_values={"output": (dialogues, llm_output)},
-                log=llm_output,
-            )
-
-        # match = re.search(regex, llm_output, re.DOTALL)
-        # if not match:
-        #     raise ValueError(f"Could not parse LLM output: `{llm_output}`")
-
-        # action = match.group(1).strip()
-        # action_input = match.group(2)
-        # # Return the action and action input
-        # return AgentAction(tool=action, tool_input=action_input.strip(" ").strip('"'), log=llm_output)
-
+            # Return values is generally always a dictionary with a single `output` key
+            # It is not recommended to try anything else at the moment :)
+            return_values={"output": (dialogues, llm_output)},
+            log=llm_output,
+        )
 
 
 class CustomPromptTemplate(BaseChatPromptTemplate):
@@ -62,7 +50,7 @@ class CustomPromptTemplate(BaseChatPromptTemplate):
     template = template.template
     # The list of tools available
     tools: List[Tool]
-    
+
     def format_messages(self, **kwargs) -> str:
         # Get the intermediate steps (AgentAction, Observation tuples)
         # Format them in a particular way
@@ -81,7 +69,7 @@ class CustomPromptTemplate(BaseChatPromptTemplate):
         return [HumanMessage(content=formatted)]
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     output_parser = CustomOutputParser()
     prompt = CustomPromptTemplate(
         tools=tools,

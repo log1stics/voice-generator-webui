@@ -1,9 +1,9 @@
 from langchain.agents import Tool, AgentExecutor, LLMSingleActionAgent
 from langchain import LLMChain
 from langchain.chat_models import ChatOpenAI
-from langchain.utilities import WikipediaAPIWrapper
+# from langchain.utilities import WikipediaAPIWrapper
 
-import description_agent
+import llm.dialogue_agent as dialogue_agent
 
 
 def set_executor(temperature, prompt, tools, output_parser):
@@ -28,15 +28,15 @@ def set_executor(temperature, prompt, tools, output_parser):
 
 def set_description_agent():
     tools = [
-        Tool(
-            name="Wikipedia",
-            func=WikipediaAPIWrapper().run,
-            description="useful for when you need to answer questions about current events"
-        )
+        # Tool(
+        #     name="Wikipedia",
+        #     func=WikipediaAPIWrapper().run,
+        #     description="useful for when you need to answer questions about current events"
+        # )
     ]
 
-    output_parser = description_agent.CustomOutputParser()
-    prompt = description_agent.CustomPromptTemplate(
+    output_parser = dialogue_agent.CustomOutputParser()
+    prompt = dialogue_agent.CustomPromptTemplate(
         tools=tools,
         input_variables=["input", "intermediate_steps"]
     )
@@ -44,11 +44,9 @@ def set_description_agent():
 
 
 def parse(llm_output):
-    output_parser = description_agent.CustomOutputParser()
+    output_parser = dialogue_agent.CustomOutputParser()
 
     return output_parser.parse(llm_output)
-
-
 
 
 if __name__ == '__main__':
