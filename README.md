@@ -26,14 +26,14 @@ Tested Environment
 - CUDA 11.7
 
 Install CUDA PyTorch
-```
+```shell
 pip install torch==1.13.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
 ```
-```
+```shell
 git clone https://github.com/log1stics/voice-generator-webui
 ```
 
-```
+```shell
 cd voice-generator-webui
 pip install -r requirements.txt
 cd tts/monotonic_align
@@ -42,8 +42,8 @@ python setup.py build_ext --inplace
 apt-get install espeak
 ```
 Run
-```
-cd ../../ # webui.pyの場所へ移動
+```shell
+cd ../../ # Go to webui.py location
 python webui.py
 ```
 
