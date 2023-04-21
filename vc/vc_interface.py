@@ -96,7 +96,7 @@ def load_wav(path):
     return resample(audio, target_length)
 
 
-def inf(hubert_model, model, net_g, input_audio, vcid, f0_up_key, f0_method):
+def convert_voice(hubert_model, model, net_g, input_audio, vcid, f0_up_key, f0_method):
     # RVC model speaker id
     sid = 0
     # f0_method = "pm"
@@ -114,16 +114,42 @@ def inf(hubert_model, model, net_g, input_audio, vcid, f0_up_key, f0_method):
 
     # get from cpt
     if_f0 = cpt.get("f0", 1)
-    sr = int(cpt.get("sr", 1).replace("k", ""))*1000
+    sr = int(cpt.get("sr", 1).replace("k", "")) * 1000
 
     return sr, model.pipeline(hubert_model, net_g, sid, audio, times, f0_up_key, f0_method, file_index, file_big_npy, index_rate, if_f0, f0_file=f0_file)
 
 
-def inf_batch(input_dir, output_dir, hubert_model, model, net_g, vcid, f0_up_key, f0_method):
+def batch_convert(input_dir, output_dir, hubert_model, model, net_g, vcid, f0_up_key, f0_method):
     for wav_path in pathlib.Path(input_dir).glob("*.wav"):
         audio = load_wav(wav_path)
-        sr, output_audio = inf(hubert_model, model, net_g, audio, vcid, f0_up_key, f0_method)
+        sr, output_audio = convert_voice(hubert_model, model, net_g, audio, vcid, f0_up_key, f0_method)
         wavfile.write(f'{output_dir}/{wav_path.name}', sr, output_audio)
+
+# silence_duration is measured in float seconds
+def concat_audio(audio_data, silence_duration):
+    target_sample_rate = 44100
+
+    resampled_audios = []
+    # for audio in audio_data:
+    for key in sorted(audio_data.keys()):
+        original_rate, original_data = audio_data[key]
+
+        # resample to target_sample_rate
+        resampled_data = resample(original_data, num=target_sample_rate * len(original_data) // original_rate)
+        resampled_audios.append(resampled_data)
+
+
+
+    # make silence NumPy array
+    silence_samples = int(target_sample_rate * silence_duration)
+    silence_data = np.zeros(silence_samples)
+    # concatenate without silence
+    # concatenated_audio = np.concatenate(resampled_audios)
+    # concatenate resampled audio data and blank data
+    concatenated_audio = np.concatenate([
+            np.hstack((resampled_audio, silence_data)) for resampled_audio in resampled_audios[:-1]] + [resampled_audios[-1]])
+
+    return target_sample_rate, concatenated_audio
 
 
 if __name__ == '__main__':

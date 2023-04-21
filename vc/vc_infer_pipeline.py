@@ -34,12 +34,12 @@ class VC(object):
     def __init__(self, tgt_sr, device, is_half):
         self.sr = 16000  # hubert输入采样率
         self.window = 160  # 每帧点数
-        self.t_pad = self.sr*x_pad  # 每条前后pad时间
-        self.t_pad_tgt = tgt_sr*x_pad
-        self.t_pad2 = self.t_pad*2
-        self.t_query = self.sr*x_query  # 查询切点前后查询时间
-        self.t_center = self.sr*x_center  # 查询切点位置
-        self.t_max = self.sr*x_max  # 免查询时长阈值
+        self.t_pad = self.sr * x_pad  # 每条前后pad时间
+        self.t_pad_tgt = tgt_sr * x_pad
+        self.t_pad2 = self.t_pad * 2
+        self.t_query = self.sr * x_query  # 查询切点前后查询时间
+        self.t_center = self.sr * x_center  # 查询切点位置
+        self.t_max = self.sr * x_max  # 免查询时长阈值
         self.device = device
         self.is_half = is_half
 
@@ -67,19 +67,19 @@ class VC(object):
             f0 = signal.medfilt(f0, 3)
         f0 *= pow(2, f0_up_key / 12)
         # with open("test.txt","w")as f:f.write("\n".join([str(i)for i in f0.tolist()]))
-        tf0 = self.sr//self.window  # 每秒f0点数
+        tf0 = self.sr // self.window  # 每秒f0点数
         if (inp_f0 is not None):
-            delta_t = np.round((inp_f0[:, 0].max()-inp_f0[:, 0].min())*tf0+1).astype("int16")
-            replace_f0 = np.interp(list(range(delta_t)), inp_f0[:, 0]*100, inp_f0[:, 1])
-            shape = f0[x_pad*tf0:x_pad*tf0+len(replace_f0)].shape[0]
-            f0[x_pad*tf0:x_pad*tf0+len(replace_f0)] = replace_f0[:shape]
+            delta_t = np.round((inp_f0[:, 0].max() - inp_f0[:, 0].min()) * tf0 + 1).astype("int16")
+            replace_f0 = np.interp(list(range(delta_t)), inp_f0[:, 0] * 100, inp_f0[:, 1])
+            shape = f0[x_pad * tf0:x_pad * tf0 + len(replace_f0)].shape[0]
+            f0[x_pad * tf0:x_pad * tf0 + len(replace_f0)] = replace_f0[:shape]
         # with open("test_opt.txt","w")as f:f.write("\n".join([str(i)for i in f0.tolist()]))
         f0bak = f0.copy()
         f0_mel = 1127 * np.log(1 + f0 / 700)
         f0_mel[f0_mel > 0] = (f0_mel[f0_mel > 0] - f0_mel_min) * 254 / (f0_mel_max - f0_mel_min) + 1
         f0_mel[f0_mel <= 1] = 1
         f0_mel[f0_mel > 255] = 255
-        f0_coarse = np.rint(f0_mel).astype(np.int64) #<<
+        f0_coarse = np.rint(f0_mel).astype(np.int64)  # <<
         return f0_coarse, f0bak  # 1-0
 
     def vc(self, model, net_g, sid, audio0, pitch, pitchf, times, index, big_npy, index_rate):  # ,file_index,file_big_npy
@@ -112,11 +112,11 @@ class VC(object):
             npy = big_npy[I.squeeze()]
             if (self.is_half == True):
                 npy = npy.astype("float16")
-            feats = torch.from_numpy(npy).unsqueeze(0).to(self.device)*index_rate + (1-index_rate)*feats
+            feats = torch.from_numpy(npy).unsqueeze(0).to(self.device) * index_rate + (1 - index_rate) * feats
 
         feats = F.interpolate(feats.permute(0, 2, 1), scale_factor=2).permute(0, 2, 1)
         t1 = ttime()
-        p_len = audio0.shape[0]//self.window
+        p_len = audio0.shape[0] // self.window
         if (feats.shape[1] < p_len):
             p_len = feats.shape[1]
             if (pitch != None and pitchf != None):
@@ -159,7 +159,7 @@ class VC(object):
         t = None
         t1 = ttime()
         audio_pad = np.pad(audio, (self.t_pad, self.t_pad), mode='reflect')
-        p_len = audio_pad.shape[0]//self.window
+        p_len = audio_pad.shape[0] // self.window
         inp_f0 = None
         if (hasattr(f0_file, 'name') == True):
             try:
@@ -182,21 +182,21 @@ class VC(object):
         t2 = ttime()
         times[1] += (t2 - t1)
         for t in opt_ts:
-            t = t//self.window*self.window
+            t = t // self.window * self.window
             if (if_f0 == 1):
-                audio_opt.append(self.vc(model, net_g, sid, audio_pad[s:t+self.t_pad2+self.window], pitch[:, s//self.window:(t+self.t_pad2)//self.window],
-                                 pitchf[:, s//self.window:(t+self.t_pad2)//self.window], times, index, big_npy, index_rate)[self.t_pad_tgt:-self.t_pad_tgt])
+                audio_opt.append(self.vc(model, net_g, sid, audio_pad[s:t + self.t_pad2 + self.window], pitch[:, s // self.window:(t + self.t_pad2) // self.window],
+                                 pitchf[:, s // self.window:(t + self.t_pad2) // self.window], times, index, big_npy, index_rate)[self.t_pad_tgt:-self.t_pad_tgt])
             else:
-                audio_opt.append(self.vc(model, net_g, sid, audio_pad[s:t+self.t_pad2+self.window], None, None, times, index, big_npy, index_rate)[self.t_pad_tgt:-self.t_pad_tgt])
+                audio_opt.append(self.vc(model, net_g, sid, audio_pad[s:t + self.t_pad2 + self.window], None, None, times, index, big_npy, index_rate)[self.t_pad_tgt:-self.t_pad_tgt])
             s = t
         if (if_f0 == 1):
-            audio_opt.append(self.vc(model, net_g, sid, audio_pad[t:], pitch[:, t//self.window:]if t is not None else pitch, pitchf[:, t //
+            audio_opt.append(self.vc(model, net_g, sid, audio_pad[t:], pitch[:, t // self.window:]if t is not None else pitch, pitchf[:, t //
                              self.window:]if t is not None else pitchf, times, index, big_npy, index_rate)[self.t_pad_tgt:-self.t_pad_tgt])
         else:
             audio_opt.append(self.vc(model, net_g, sid, audio_pad[t:], None, None, times, index, big_npy, index_rate)[self.t_pad_tgt:-self.t_pad_tgt])
         audio_opt = np.concatenate(audio_opt)
-        
+
         del pitch, pitchf, sid
         torch.cuda.empty_cache()
-        
+
         return audio_opt

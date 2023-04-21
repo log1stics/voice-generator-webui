@@ -3,7 +3,7 @@ sys.path.append('ui')
 
 
 import gradio as gr
-from ui import themes, generate, vc_batch, train, settings
+from ui import themes, generate, vc_batch, with_llm, train, settings
 import argparse
 
 
@@ -25,8 +25,9 @@ with gr.Blocks(theme=seafoam) as app:
     gr.Markdown(top)
     with gr.Tabs():
         generate.ui()
+        with_llm.ui()
         vc_batch.ui()
-        # train.ui()
+        settings.ui()
 
 
 if iscolab:
