@@ -1,31 +1,30 @@
 # Voice Generator web UI
-A Multi-speaker, multilingual speech generation tool.
-
+VITS、RVCを用いた多言語、多話者対応のアクセント調整可能な音声生成ツール
 <div align="center">
 
 [![Open In Colab](https://img.shields.io/badge/Colab-F9AB00?style=for-the-badge&logo=googlecolab&color=525252)](https://colab.research.google.com/github/log1stics/voice-generator-webui/blob/main/colab.ipynb)
 
 </div>
 
-![](docs/images/Screenshot.png)
+![](images/Screenshot.png)
 
-## Features
-
-- Speech synthesis for 209 speakers (100 Japanese / 109 English)
-- Script generation using LLM
-- Accent and phoneme editing functions
-- Voice conversion by RVC
-- Batch voice conversion by RVC
-
+## 機能
+- 209人分の音声合成(日本語話者 100人 / 英語話者 109人)
+- LLMを用いた台本生成
+- アクセントや音素の編集
+- RVCによる音声変換
+- RVCによるバッチ音声変換
 
 
-## Installation and Running
-Tested Environment
+
+## インストール
+動作確認済み環境
 - Ubuntu 22
 - Python 3.10.6
 - CUDA 11.7
 
-Install CUDA PyTorch
+
+CUDA版PyTorchをインストール
 ```
 pip install torch==1.13.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
 ```
@@ -47,21 +46,20 @@ cd ../../ # webui.pyの場所へ移動
 python webui.py
 ```
 
-## Add RVC model
+## RVCモデルの追加
 
-For example, if you want to handle an RVC training model called EXAMPLE_MODEL.pth, place it as follows
+例えばEXAMPLE_MODEL.pthというRVCの学習モデルを扱いたい場合、以下のようにpthファイルを配置した後、webuiを再起動してください
 ```bash
 vc/
 └── models/
     └── EXAMPLE_MODEL/
-        ├── EXAMPLE_MODEL.pth # file name should be the same as the directory name
-        ├── added.index # not necessary (name is fixed to added.index)
-        └── total_fea.npy # not necessary (name is fixed to added.index)
+        ├── EXAMPLE_MODEL.pth # (ファイル名はディレクトリ名と同じにする)
+        ├── added.index # なくても可 (名前はadded.index固定)
+        └── total_fea.npy # なくても可 (名前はtotal_fea.npy固定)
 ```
 
 
-
-## Contributing
+## For developers
 Here's how to add code to this repo: [Contributing](docs/add_vits.md)
 
 
