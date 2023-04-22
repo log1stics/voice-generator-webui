@@ -39,10 +39,10 @@ PowersShellやVSCodeを再起動しないと環境変数はPowersShellやVSCode�
 
 ---
 参考
-- pyopenjtalk
-https://github.com/log1stics/voice-generator-webui/issues/1
+- pyopenjtalk  
+https://github.com/log1stics/voice-generator-webui/issues/1  
 https://discourse.slicer.org/t/configuring-slicer-fails-c-compiler-not-found/23340/3
 
-- espeak
-https://bootphon.github.io/phonemizer/install.html#on-windows
+- espeak  
+https://bootphon.github.io/phonemizer/install.html#on-windows  
 https://github.com/bootphon/phonemizer/issues/44

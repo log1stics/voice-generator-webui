@@ -22,36 +22,46 @@ A Multi-speaker, multilingual speech generation tool.
 
 
 ## Installation and Running
-Tested Environment
-- Ubuntu 22
-- Python 3.10.6
-- CUDA 11.7
 
-Install CUDA PyTorch
-```shell
-pip install torch==1.13.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
-```
-```shell
-git clone https://github.com/log1stics/voice-generator-webui
-```
+- [Python](https://www.python.org/downloads/windows/) (tested on 3.10.6)
+- CUDA PyTorch
+- [Build Tools for Visual Studio](dependencies.md)
 
-```shell
-cd voice-generator-webui
-pip install -r requirements.txt
-cd tts/monotonic_align
-python setup.py build_ext --inplace
+### Windows
+1. download the zip or
+`git clone https://github.com/log1stics/voice-generator-webui`
 
-apt-get install espeak
+2. run `setup.bat
+If you get an error installing pyopenjtalk, check [here](docs/dependencies.md)
+
+Run the webui.py file in PowerShell or at the command prompt
 ```
-Run
-```shell
-cd ../../ # Go to webui.py location
 python webui.py
+```
+
+### Linux
+
+
+Run the webui.py file at a PowerShell or command prompt
+```shell
+apt-get install espeak # For English Text To Speak
+
+git clone https://github.com/log1stics/voice-generator-webui
+chmod +x setup.sh
+```
+```
+setup.sh
+```
+
+```shell
+# if you do not use Japanese Text To Speak
+# you can avoid install pyopenjtalk
+setup.sh en
 ```
 
 ## Add RVC model
 
-For example, if you want to handle an RVC training model called EXAMPLE_MODEL.pth, place it as follows
+For example, if you want to handle an RVC trained model named EXAMPLE_MODEL.pth, place it as follows
 ```bash
 vc/
 └── models/
