@@ -1,5 +1,11 @@
-import pyopenjtalk
+# import pyopenjtalk
 import re
+import importlib
+
+# dynamic import so that English-only users do not have to install pyopenjtalk
+def import_pyopenjtalk():
+    return importlib.import_module("pyopenjtalk")
+
 
 def _numeric_feature_by_regex(regex, s):
     match = re.search(regex, s)
@@ -9,6 +15,7 @@ def _numeric_feature_by_regex(regex, s):
 
 
 def pyopenjtalk_g2p_prosody(text: str, drop_unvoiced_vowels: bool = True):
+    pyopenjtalk = import_pyopenjtalk()
 
     labels = pyopenjtalk.make_label(pyopenjtalk.run_frontend(text))
     N = len(labels)
