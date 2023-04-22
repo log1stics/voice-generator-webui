@@ -19,12 +19,9 @@ VITS、RVCを用いた多言語、多話者対応のアクセント調整可能�
 
 ## インストール
 
-- [Python 3.10.6](https://www.python.org/downloads/windows/)
-- [CUDA](https://developer.nvidia.com/cuda-toolkit-archive)
-すでにインストール済みのケースが多いです。  
-初めてAI系のプログラムを動かす場合、`CUDA Toolkit 11.8.0`をDL & インストール
-- Build Tools for Visual Studio
-詳しくは[こちら](dependencies.md)
+- [Python](https://www.python.org/downloads/windows/) (3.10.6でテスト済み)
+- [CUDA PyTorch](cuda.md)
+- [Build Tools for Visual Studio](dependencies.md)
 
 ### Windows
 1. zipをダウンロードするか
