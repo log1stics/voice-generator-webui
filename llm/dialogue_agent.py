@@ -21,14 +21,17 @@ class CustomOutputParser(AgentOutputParser):
                 log=llm_output,
             )
         # Parse out the action and action input
-        pattern = r'(\w+)[：:]\s*"(.+?)"'
-        llm_output = llm_output.replace('「', '"').replace('」', '"')
+        pattern = r'(\w+)[：:]\s*(.+)'
+        llm_output = llm_output.replace('「', '').replace('」', '')
         matches = re.findall(pattern, llm_output)
         dialogues = {}
 
+        # parentheses pattern
+        pattern = r"[（\(][^）\)]*[）\)]"
+
         if matches:
             for n, match in enumerate(matches):
-                speaker, dialogue = match
+                speaker, dialogue = re.sub(pattern, "", match[0]), re.sub(pattern, "", match[1])
                 if speaker not in dialogues:
                     dialogues[speaker] = {}
                 dialogues[speaker][n] = dialogue
