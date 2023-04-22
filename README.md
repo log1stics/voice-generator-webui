@@ -25,14 +25,16 @@ A Multi-speaker, multilingual speech generation tool.
 
 - [Python](https://www.python.org/downloads/windows/) (tested on 3.10.6)
 - [CUDA PyTorch](https://pytorch.org/get-started/locally/)
-- [Build Tools for Visual Studio](docs/dependencies.md)
+
 
 ### Windows
+- [espeak](docs/dependencies.md#espeak)
+- [Build Tools for Visual Studio](docs/dependencies.md#build-tools-for-visual-studio) (Not necessary if Japanese is not generated)
+
 1. download the zip or
 `git clone https://github.com/log1stics/voice-generator-webui`
 
 2. run `setup.bat`  
-If you get an error installing pyopenjtalk, check [here](docs/dependencies.md)
 
 Run the webui.py file in PowerShell or at the command prompt
 ```

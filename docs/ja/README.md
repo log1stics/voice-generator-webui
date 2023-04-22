@@ -21,9 +21,12 @@ VITS、RVCを用いた多言語、多話者対応のアクセント調整可能�
 
 - [Python](https://www.python.org/downloads/windows/) (3.10.6でテスト済み)
 - [CUDA PyTorch](cuda.md)
-- [Build Tools for Visual Studio](dependencies.md)
+
 
 ### Windows
+- [Build Tools for Visual Studio](dependencies.md)
+- [espeak](dependencies.md#espeak-英語を生成しない場合は不要) (英語を生成しない場合は不要)
+
 1. zipをダウンロードするか
 `git clone https://github.com/log1stics/voice-generator-webui`
 
