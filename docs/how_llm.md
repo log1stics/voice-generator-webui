@@ -26,5 +26,6 @@ Copy and paste the resulting ChatGPT output into LLM Output and press `Generate`
 
 
 ## To set the API key
-Enter the API key in Settings
-Press "Generate with LLM
+Enter API key in Settings  
+Enter presets and prompts  
+Press `Generate with LLM`

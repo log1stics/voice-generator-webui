@@ -25,7 +25,7 @@ A Multi-speaker, multilingual speech generation tool.
 
 - [Python](https://www.python.org/downloads/windows/) (tested on 3.10.6)
 - CUDA PyTorch
-- [Build Tools for Visual Studio](dependencies.md)
+- [Build Tools for Visual Studio](docs/dependencies.md)
 
 ### Windows
 1. download the zip or

@@ -27,5 +27,6 @@ Character name: "Dialogue"
 
 
 ## APIキーを設定する場合
-SettingsでAPIキーを入力
-Generate with LLMを押下
+SettingsでAPIキーを入力  
+プリセットとプロンプトを入力  
+`Generate with LLM`を押下
