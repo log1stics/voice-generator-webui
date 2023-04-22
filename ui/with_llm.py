@@ -16,11 +16,11 @@ import json
 
 
 # load vits model names
-with open('tts/models/model_list.json', 'r') as file:
+with open('tts/models/model_list.json', 'r', encoding="utf-8") as file:
     global lang_dic
     lang_dic = json.load(file)
 
-with open('ui/speaker_presets.json', 'r') as file:
+with open('ui/speaker_presets.json', 'r', encoding="utf-8") as file:
     global presets
     presets = json.load(file)
 

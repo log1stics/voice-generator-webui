@@ -1,4 +1,6 @@
-IF "%1"!="en" (
+@echo off
+
+IF NOT "%1"=="en" (
     pip install pyopenjtalk
 )
 

@@ -14,7 +14,7 @@ import os
 import json
 
 # load vits model names
-with open('tts/models/model_list.json', 'r') as file:
+with open('tts/models/model_list.json', 'r', encoding="utf-8") as file:
     global lang_dic
     lang_dic = json.load(file)
 
@@ -63,7 +63,7 @@ def acc2speech(lang, text, sid, vcid, pitch, f0method):
 
 def save_preset(preset_name, lang_dropdown, sid, vcid, pitch, f0method):
     path = 'ui/speaker_presets.json'
-    with open(path, "r") as file:
+    with open(path, "r", encoding="utf-8") as file:
         data = json.load(file)
 
     data[preset_name] = {}
@@ -74,7 +74,7 @@ def save_preset(preset_name, lang_dropdown, sid, vcid, pitch, f0method):
     data[preset_name]['f0method'] = f0method
 
     # 更新されたデータをJSONファイルに書き込み
-    with open(path, "w") as file:
+    with open(path, "w", encoding="utf-8") as file:
         json.dump(data, file, indent=2, ensure_ascii=False)
 
 
