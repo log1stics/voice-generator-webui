@@ -7,6 +7,9 @@ from ui import themes, generate, vc_batch, with_llm, train, settings
 import argparse
 
 
+# When you don't want to type the api key every time
+# os.environ["OPENAI_API_KEY"] = 'XXXXXXXXX'
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--colab", action="store_true", help="Launch in colab")
 iscolab = parser.parse_args().colab
