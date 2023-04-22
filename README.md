@@ -24,7 +24,7 @@ A Multi-speaker, multilingual speech generation tool.
 ## Installation and Running
 
 - [Python](https://www.python.org/downloads/windows/) (tested on 3.10.6)
-- CUDA PyTorch
+- [CUDA PyTorch](https://pytorch.org/get-started/locally/)
 - [Build Tools for Visual Studio](docs/dependencies.md)
 
 ### Windows
