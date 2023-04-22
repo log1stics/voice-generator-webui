@@ -49,12 +49,14 @@ def generate_dialogues(dialogues, selected_presets, llm_output, silence_duration
     return llm_output, vc_interface.concat_audio(audio_data, silence_duration)
 
 
-def generate_with_llm(prompt, selected_presets, silence_duration):
-    desc = llm_interface.set_description_agent()
+def generate_with_llm(prompt, selected_presets, temperature, max_tokens, silence_duration):
+    if max_tokens == 0:
+        max_tokens = None
+    executor = llm_interface.set_description_agent(temperature, max_tokens)
 
     # suffix = '\n登場人物は以下です。\n' + ', '.join(selected_presets)
     suffix = '\nThe characters are as follows\n' + ', '.join(selected_presets)
-    dialogues, llm_output = desc.run(prompt + suffix)
+    dialogues, llm_output = executor.run(prompt + suffix)
     return generate_dialogues(dialogues, selected_presets, llm_output, silence_duration)
 
 
@@ -72,32 +74,39 @@ top = '''
   </div>
 '''
 
+default_pr = '''以下の条件を守りなさい
+・AIについての議論を描写すること
+・遠回しな発言をする
+・ケンの葛藤を描くこと
+・ケンとカナのすれ違いを描きなさい
+
+・ミカは性格描写は天真爛漫
+・カナは性格描写は内気
+'''
+
 def ui():
     with gr.TabItem('With LLM'):
         gr.Markdown(top)
         with gr.Row():
             with gr.Column():
                 presets_dropdown = gr.Dropdown(choices=list(presets.keys()), label="Presets", multiselect=True)
-                default_pr = '興味を惹く台本を日本語で書きなさい'
+                
                 prompt = gr.Textbox(label="Prompt", value=default_pr, lines=8)
+                temperature = gr.Slider(minimum=0, maximum=1, step=0.01, label='Temperature', value=0)
+                max_tokens = gr.Slider(minimum=0, maximum=3800, step=1, label='Max Tokens', info='0 means max', value=0)
                 silence_duration = gr.Slider(minimum=0, maximum=4, step=0.1, label='Silence Duration (seconds)', value=0.2)
 
             with gr.Column(scale=1.4):
-                # chatbot = gr.Chatbot()
                 llm_output = gr.Textbox(label="LLM Output", interactive=True)
                 generate_with_llm_bt = gr.Button("Generate with LLM", variant="primary")
                 generate_bt = gr.Button("Generate", variant="primary")
                 # clear = gr.Button("Clear")
-
-                # msg.submit(user, [msg, chatbot], [msg, chatbot], queue=False).then(
-                #     bot, chatbot, chatbot
-                # )
                 
         with gr.Row():
             output_audio = gr.Audio(label="Output Audio", type='numpy')
             generate_with_llm_bt.click(
                 fn=generate_with_llm,
-                inputs=[prompt, presets_dropdown, silence_duration],
+                inputs=[prompt, presets_dropdown, temperature, max_tokens, silence_duration],
                 outputs=[llm_output, output_audio]
             )
             generate_bt.click(

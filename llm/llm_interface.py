@@ -6,8 +6,8 @@ from langchain.chat_models import ChatOpenAI
 import llm.dialogue_agent as dialogue_agent
 
 
-def set_executor(temperature, prompt, tools, output_parser):
-    llm = ChatOpenAI(temperature=temperature, model_name='gpt-3.5-turbo')
+def set_executor(temperature, max_tokens, prompt, tools, output_parser):
+    llm = ChatOpenAI(temperature=temperature, model_name='gpt-3.5-turbo', max_tokens=max_tokens, request_timeout=90)
 
     # LLM chain consisting of the LLM and a prompt
     llm_chain = LLMChain(llm=llm, prompt=prompt)
@@ -26,7 +26,7 @@ def set_executor(temperature, prompt, tools, output_parser):
     return AgentExecutor.from_agent_and_tools(agent=agent, tools=tools, verbose=True,)
 
 
-def set_description_agent():
+def set_description_agent(temperature, max_tokens):
     tools = [
         # Tool(
         #     name="Wikipedia",
@@ -40,7 +40,7 @@ def set_description_agent():
         tools=tools,
         input_variables=["input", "intermediate_steps"]
     )
-    return set_executor(0, prompt, tools, output_parser)
+    return set_executor(temperature, max_tokens, prompt, tools, output_parser)
 
 
 def parse(llm_output):

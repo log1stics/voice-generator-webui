@@ -27,5 +27,14 @@ Copy and paste the resulting ChatGPT output into LLM Output and press `Generate`
 
 ## To set the API key
 Enter API key in Settings  
-Enter presets and prompts  
-Press `Generate with LLM`
+Enter the preset and prompt  
+Press `Generate with LLM
+
+The prompt will be automatically modified according to `llm/template.py  
+The final prompt will appear in green on the console.
+
+### For advanced users and developers
+You can change the automatic modification by editing `llm/template.py`,
+Note that you may not get the output as formatted and the text may fail to load.
+
+You can control the reading method with regular expressions in `llm/dialogue_agent.py`.
