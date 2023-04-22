@@ -9,6 +9,8 @@ sys.path.append('llm')
 from vc import vc_interface
 from tts import tts_interface
 from llm import llm_interface
+from scripts import download
+
 import gradio as gr
 import numpy as np
 
@@ -30,6 +32,7 @@ def generate_dialogues(dialogues, selected_presets, llm_output, silence_duration
     for preset_name in dialogues:
         if preset_name in selected_presets:
             preset = presets[preset_name]
+            download.get_vits_model(lang_dic[preset['lang']])
             model = tts_interface.load_model(lang_dic[preset['lang']])
             if preset['vcid'] != 'No conversion':
                 hubert_model = vc_interface.load_hubert()
@@ -84,12 +87,21 @@ default_pr = '''以下の条件を守りなさい
 ・カナは性格描写は内気
 '''
 
+default_output='''ミカ: ねえ、ケンくん、このAIの進化ってすごいわよね！（笑顔で）私たちも追いつけないくらい速いわ！
+
+カナ: （内気に）うん、それは本当だね。でも、それが原因でみんなが仕事を失っちゃってるのが気になるわ。
+
+ケン: （悩んで）確かに、AIの力はどんどん増していくけど、私たち人間がどう適応していくかは…難しい問題だよね。
+
+ミカ: そうね、でも人間だって諦めないで進化するものよ！（天真爛漫な笑顔で）
+'''
+
 def ui():
     with gr.TabItem('With LLM'):
         gr.Markdown(top)
         with gr.Row():
             with gr.Column():
-                presets_dropdown = gr.Dropdown(choices=list(presets.keys()), label="Presets", multiselect=True)
+                presets_dropdown = gr.Dropdown(choices=list(presets.keys()), label="Presets", multiselect=True, value=['ミカ', 'カナ', 'ケン'])
                 
                 prompt = gr.Textbox(label="Prompt", value=default_pr, lines=8)
                 temperature = gr.Slider(minimum=0, maximum=1, step=0.01, label='Temperature', value=0)
@@ -97,7 +109,7 @@ def ui():
                 silence_duration = gr.Slider(minimum=0, maximum=4, step=0.1, label='Silence Duration (seconds)', value=0.2)
 
             with gr.Column(scale=1.4):
-                llm_output = gr.Textbox(label="LLM Output", interactive=True)
+                llm_output = gr.Textbox(label="LLM Output", interactive=True, lines=12, value=default_output)
                 generate_with_llm_bt = gr.Button("Generate with LLM", variant="primary")
                 generate_bt = gr.Button("Generate", variant="primary")
                 # clear = gr.Button("Clear")
