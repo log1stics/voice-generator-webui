@@ -7,7 +7,17 @@ NVIDIA GPUにグラフィック以外の計算処理をさせるライブラリ�
 ディープラーニングをPythonで行うためのライブラリです。  
 CPU版もありますがCUDA(GPU)版の方がはるかに高速です。
 ```
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+pip install torch --index-url https://download.pytorch.org/whl/cu118
+```
+
+### トラブルシューティング
+```
+AssertionError: Torch not compiled with CUDA enabled
+```
+このケースはCPU版のPyTorchをアンインストールする必要があります
+```
+pip uninstall torch
+pip install torch --index-url https://download.pytorch.org/whl/cu118
 ```
 
 ---

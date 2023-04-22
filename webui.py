@@ -19,7 +19,7 @@ seafoam = themes.Seafoam()
 
 top = '''
   <div align="center">
-  <a href="https://twitter.com/q107z"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Logo_of_Twitter%2C_Inc..svg/292px-Logo_of_Twitter%2C_Inc..svg.png" width="30"></a>
+  <a href="https://twitter.com/q107z"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Logo_of_Twitter.svg/292px-Logo_of_Twitter.svg.png" width="30"></a>
   </div>
   <br>
 '''
