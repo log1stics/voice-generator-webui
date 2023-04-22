@@ -9,7 +9,7 @@ sys.path.append('vc/infer_pack')
 import gradio as gr
 from vc import vc_interface
 from tts import tts_interface
-import scripts.download as download
+from scripts import download
 import os
 import json
 

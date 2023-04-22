@@ -52,14 +52,16 @@ def generate_dialogues(dialogues, selected_presets, llm_output, silence_duration
     return llm_output, vc_interface.concat_audio(audio_data, silence_duration)
 
 
-def generate_with_llm(prompt, selected_presets, temperature, max_tokens, silence_duration):
+def generate_with_llm(prompt, selected_presets, temperature, max_tokens, silence_duration, progress=gr.Progress()):
     if max_tokens == 0:
         max_tokens = None
     executor = llm_interface.set_description_agent(temperature, max_tokens)
 
     # suffix = '\n登場人物は以下です。\n' + ', '.join(selected_presets)
     suffix = '\nThe characters are as follows\n' + ', '.join(selected_presets)
+    progress(0.2, desc="Requesting ChatGPT API...")
     dialogues, llm_output = executor.run(prompt + suffix)
+    progress(0.8, desc="Generating Audio...")
     return generate_dialogues(dialogues, selected_presets, llm_output, silence_duration)
 
 
