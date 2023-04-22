@@ -6,7 +6,7 @@ VITS、RVCを用いた多言語、多話者対応のアクセント調整可能�
 
 </div>
 
-![](images/Screenshot.png)
+![](../images/Screenshot.png)
 
 ## 機能
 - 209人分の音声合成(日本語話者 100人 / 英語話者 109人)
@@ -18,32 +18,45 @@ VITS、RVCを用いた多言語、多話者対応のアクセント調整可能�
 
 
 ## インストール
-動作確認済み環境
-- Ubuntu 22
-- Python 3.10.6
-- CUDA 11.7
 
+- [Python 3.10.6](https://www.python.org/downloads/windows/)
+- [CUDA](https://developer.nvidia.com/cuda-toolkit-archive)
+すでにインストール済みのケースが多いです。
+初めてAI系のプログラムを動かす場合、`CUDA Toolkit 11.8.0`をDL & インストール
+- Build Tools for Visual Studio
+詳しくは[こちら](dependencies.md)
 
-CUDA版PyTorchをインストール
+### Windows
+1. zipをダウンロードするか
+`git clone https://github.com/log1stics/voice-generator-webui`
+
+2. `setup.bat`を実行
+pyopenjtalkのインストールでエラーになる場合[こちら](dependencies.md)を確認してください
+
+PowerShellやコマンド プロンプトでwebui.pyファイルを実行
 ```shell
-pip install torch==1.13.1+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
+python webui.py
 ```
+
+### Linux
+
+
 ```shell
 git clone https://github.com/log1stics/voice-generator-webui
+chmod +x setup.sh
+```
+```shell
+setup.sh
 ```
 
 ```shell
-cd voice-generator-webui
-pip install -r requirements.txt
-cd tts/monotonic_align
-python setup.py build_ext --inplace
-
+# If you do not use Japanese Text To Speak
+# avoid install pyopenjtalk
+setup.sh en
+```
+```shell
+# For English Text To Speak
 apt-get install espeak
-```
-Run
-```shell
-cd ../../ # webui.pyの場所へ移動
-python webui.py
 ```
 
 ## RVCモデルの追加
