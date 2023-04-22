@@ -18,7 +18,7 @@ The characters are as follows
 ミカ, カナ, ケン
 
 Please strictly adhere to the following format:
-Character name: "Dialogue"
+Character name: Dialogue
 ```
 
 得られたChatGPTの出力をLLM Outputにコピペして、`Generate`を押下すれば音声が出力されます。(このときGenerate with LLMを選択しないように注意してください)

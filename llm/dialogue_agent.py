@@ -21,7 +21,7 @@ class CustomOutputParser(AgentOutputParser):
                 log=llm_output,
             )
         # Parse out the action and action input
-        pattern = r'(\w+)[：:]\s*(.+)'
+        pattern = r'(.*?)[：:]\s*(.*)'
         llm_output = llm_output.replace('「', '').replace('」', '')
         matches = re.findall(pattern, llm_output)
         dialogues = {}
