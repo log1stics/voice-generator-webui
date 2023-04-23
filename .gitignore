@@ -4,3 +4,5 @@ dev/
 tts/models/*txt
 tts/models/*pth
 vc/models/*
+tts/monotonic_align/build/*
+tts/monotonic_align/monotonic_align/*
