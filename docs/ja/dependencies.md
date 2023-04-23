@@ -32,7 +32,7 @@ espeakがない場合英語の音声生成時に以下のエラーが発生す�
 
 ### espeakのインストール
 [こちら](https://github.com/espeak-ng/espeak-ng/releases)から `espeak-ng-X64.msi`をダウンロードし実行してください。  
-実行後、以下をシステム環境変数に`PHONEMIZER_ESPEAK_LIBRARY`を追加して値を以下に設定して完了です。  
+実行後、システム環境変数に`PHONEMIZER_ESPEAK_LIBRARY`を追加して値を以下に設定し完了です。  
 `C:\Program Files\eSpeak NG\libespeak-ng.dll`
 
 ![](../images/espeak.png)

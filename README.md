@@ -13,7 +13,7 @@ A Multi-speaker, multilingual speech generation tool.
 
 ## Features
 
-- Speech synthesis for 209 speakers (100 Japanese / 109 English)
+- Speech synthesis for 209 speakers (109 English / 100 Japanese)
 - Script generation using LLM
 - Accent and phoneme editing functions
 - Voice conversion by RVC

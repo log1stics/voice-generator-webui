@@ -8,7 +8,7 @@ Without espeak, the following error should occur when generating English speech.
 
 ### Installing espeak
 Download `espeak-ng-X64.msi` from [here](https://github.com/espeak-ng/espeak-ng/releases) and run it.  
-After execution, add the following to the system environment variable `PHONEMIZER_ESPEAK_LIBRARY` and set the value to the following to complete.  
+After execution, add `PHONEMIZER_ESPEAK_LIBRARY` to the system environment variable and set the value to the following and you are done. 
 `C:\Program Files\eSpeak NG\libespeak-ng.dll`
 
 ![](images/espeak.png)
