@@ -34,7 +34,8 @@ A Multi-speaker, multilingual speech generation tool.
 1. download the zip or
 `git clone https://github.com/log1stics/voice-generator-webui`
 
-2. run `setup.bat`  
+2. run `setup.bat` or `setup.bat en`  
+`setup.bat en` avoids installation of pyopenjtalk used for Japanese generation
 
 Run the webui.py file in PowerShell or at the command prompt
 ```
