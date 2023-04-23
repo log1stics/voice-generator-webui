@@ -98,5 +98,5 @@ Here's how to add code to this repo: [Contributing](docs/add_vits.md)
 - [pyopenjtalk](https://github.com/r9y9/pyopenjtalk)
 
 ### Dataset
-- [JSUT](https://sites.google.com/site/shinnosuketakamichi/publication/jsut)
+- [JVS](https://sites.google.com/site/shinnosuketakamichi/research-topics/jvs_corpus)
 - [VCTK](https://datashare.ed.ac.uk/handle/10283/2950)

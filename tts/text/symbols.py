@@ -15,7 +15,7 @@ vctk_symbols = [_pad] + list(_punctuation) + list(_letters) + list(_letters_ipa)
 # Special symbol ids for train
 # SPACE_ID = vctk_symbols.index(" ")
 
-jsut_symbols = [
+jvs_symbols = [
     'a', 'i', 'u', 'e', 'o',
     'I', 'U',
     'k', 'ky', 'g', 'gy',
@@ -35,4 +35,4 @@ jsut_symbols = [
 ]
 
 vctk_index = {s: i for i, s in enumerate(vctk_symbols)}
-jsut_index = {s: i for i, s in enumerate(jsut_symbols)}
+jvs_index = {s: i for i, s in enumerate(jvs_symbols)}

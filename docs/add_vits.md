@@ -1,15 +1,15 @@
 # Add other VITS model
 
-Here is an example of adding a jsut corpus model.
+Here is an example of adding a jvs corpus model.
 Trained models and configs, etc should be deployed as follows.
 
 ```bash
 tts
 ├── configs
-│   └── jsut.json # VITS config
+│   └── jvs.json # VITS config
 └── models
-    ├── jsut.pth # VITS model
-    └── jsut_speakers.txt # speakers name list inside model
+    ├── jvs.pth # VITS model
+    └── jvs_speakers.txt # speakers name list inside model
 
 ```
 
@@ -17,7 +17,7 @@ tts
 ```json
 {
     "en": "vctk",
-    "ja": "jsut",
+    "ja": "jvs",
     ...
     "displayed name": "model name"
 }
@@ -28,7 +28,7 @@ Add the following processing based on the symbols used to train VITS.
 
 `text/symbols.py`
 ```python
-jsut_symbols = [
+jvs_symbols = [
     'a', 'i', 'u', 'e', 'o',
     'I', 'U',
     'k', 'ky', 'g', 'gy',
@@ -47,7 +47,7 @@ jsut_symbols = [
      '[', ']', '#'
 ]
 
-jsut_index = {s: i for i, s in enumerate(jsut_symbols)}
+jvs_index = {s: i for i, s in enumerate(jvs_symbols)}
 ```
 
 `text/cleaners.py`
@@ -65,6 +65,6 @@ def text_to_sequence(text, lang):
   if lang == 'ja':
     clean_text = cleaners.japanese_cleaners(text)
     for symbol in clean_text:
-      symbol_id = symbols.jsut_index[symbol]
+      symbol_id = symbols.jvs_index[symbol]
       sequence += [symbol_id]
 ```

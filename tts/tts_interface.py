@@ -13,8 +13,8 @@ from .text import text_to_sequence
 def load_model(name):
     hps = utils.get_hparams_from_file(f"tts/configs/{name}.json")
 
-    if name == 'jsut':
-        symbols_len = len(symbols.jsut_symbols)
+    if name == 'jvs':
+        symbols_len = len(symbols.jvs_symbols)
     else:
         symbols_len = len(symbols.vctk_symbols)
 

@@ -3,7 +3,7 @@ from . import cleaners
 # from text.symbols import symbols
 from . import symbols
 
-# symbols = symbols.jsut_symbols
+# symbols = symbols.jvs_symbols
 
 # Mappings from symbol to numeric ID and vice versa:
 # _symbol_to_id = {s: i for i, s in enumerate(symbols)}
@@ -28,7 +28,7 @@ def text_to_sequence(text, lang, cleaned):
     else:
       clean_text = cleaners.japanese_cleaners(text)
     for symbol in clean_text:
-      symbol_id = symbols.jsut_index[symbol]
+      symbol_id = symbols.jvs_index[symbol]
       sequence += [symbol_id]
   else:
     if cleaned:
