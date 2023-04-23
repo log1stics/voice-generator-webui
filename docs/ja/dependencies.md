@@ -37,7 +37,7 @@ espeakがない場合英語の音声生成時に以下のエラーが発生す�
 
 ![](../images/espeak.png)
 
-PowersShellやVSCodeを再起動しないと環境変数はPowersShellやVSCodeに反映されませんので注意してください。
+ターミナル(PowersShellやVSCode等)を再起動しないと環境変数はターミナルに反映されませんので注意してください。
 
 ---
 参考

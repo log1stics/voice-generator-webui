@@ -27,15 +27,15 @@ Character name: Dialogue
 
 
 ## APIキーを設定する場合
-SettingsでAPIキーを入力  
-プリセットとプロンプトを入力  
-`Generate with LLM`を押下
+1. SettingsでAPIキーを入力  
+2. プリセットとプロンプトを入力  
+3. `Generate with LLM`を押下
 
-プロンプトは`llm/template.py`に従い自動的に改変されます。  
-最終的なプロンプトはコンソールに緑色で表示されます。
+プロンプトは[llm/template.py](https://github.com/log1stics/voice-generator-webui/blob/main/llm/template.py)に代入されます。  
+最終的なChatGPTへの入力プロンプトはコンソールに緑色で表示されます。
 
 ### 上級者、開発者向け
-`llm/template.py`を編集することで自動改変の内容を変更できますが、
+[llm/template.py](https://github.com/log1stics/voice-generator-webui/blob/main/llm/template.py)を編集することで最終的なChatGPTへの入力プロンプトの内容を変更できますが、  
 フォーマット通りの出力を得られずテキストの読み込みに失敗する可能性があることに留意してください。
 
-`llm/dialogue_agent.py`で読み込み方法を正規表現で制御できます。
+[llm/dialogue_agent.py](https://github.com/log1stics/voice-generator-webui/blob/main/llm/dialogue_agent.py)で読み込み方法を正規表現で制御できます。

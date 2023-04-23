@@ -19,24 +19,36 @@ VITS、RVCを用いた多言語、多話者対応のアクセント調整可能�
 
 ## インストール
 
+### 前提
 - [Python](https://www.python.org/downloads/windows/) (3.10.6でテスト済み)
-- [CUDA PyTorch](cuda.md)
+
+- CUDA版PyTorch  
+ `pip show torch` でCUDA版PyTorchがインストール済みか確認  
+以下のように`cu`という文字がVersionに含まれてればOK
+```shell
+Version: 2.0.0+cu118
+```
+含まれてない場合はCUDA版PyTorchをインストール
+```shell
+pip uninstall torch
+pip install torch --index-url https://download.pytorch.org/whl/cu118
+```
 
 
 ### Windows
-- [Build Tools for Visual Studio](dependencies.md)
-- [espeak](dependencies.md#espeak-英語を生成しない場合は不要) (英語を生成しない場合は不要)
 
 1. zipをダウンロードするか
 `git clone https://github.com/log1stics/voice-generator-webui`
 
-2. `setup.bat`を実行
+3. `setup.bat`を実行  
 pyopenjtalkのインストールでエラーになる場合[こちら](dependencies.md)を確認してください
 
 PowerShellやコマンド プロンプトでwebui.pyファイルを実行
 ```shell
 python webui.py
 ```
+
+[espeakのインストール](dependencies.md#espeak-英語を生成しない場合は不要) (英語を生成しない場合はインストール不要)
 
 ### Linux
 

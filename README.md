@@ -24,7 +24,18 @@ A Multi-speaker, multilingual speech generation tool.
 ## Installation and Running
 
 - [Python](https://www.python.org/downloads/windows/) (tested on 3.10.6)
-- [CUDA PyTorch](https://pytorch.org/get-started/locally/)
+- PyTorch for CUDA  
+ Check if the CUDA version of PyTorch is already installed with `pip show torch`.  
+It is OK if `cu` is included in the Version as follows.
+```shell
+Version: 2.0.0+cu118
+```
+If not, install the CUDA version of PyTorch.
+
+```
+pip uninstall torch
+pip install torch --index-url https://download.pytorch.org/whl/cu118
+```
 
 
 ### Windows
