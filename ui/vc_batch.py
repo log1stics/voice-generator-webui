@@ -1,8 +1,5 @@
 from vc import vc_interface
 import gradio as gr
-import sys
-sys.path.append('vc')
-sys.path.append('vc/infer_pack')
 import os
 
 

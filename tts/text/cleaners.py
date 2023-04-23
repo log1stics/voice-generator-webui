@@ -15,7 +15,7 @@ hyperparameter. Some cleaners are English-specific. You'll typically want to use
 import re
 from unidecode import unidecode
 from phonemizer import phonemize
-from text.phonemizer_jp import pyopenjtalk_g2p_prosody
+from .phonemizer_jp import pyopenjtalk_g2p_prosody
 
 # Regular expression matching whitespace:
 _whitespace_re = re.compile(r'\s+')

@@ -1,7 +1,7 @@
 """ from https://github.com/keithito/tacotron """
-from text import cleaners
+from . import cleaners
 # from text.symbols import symbols
-from text import symbols
+from . import symbols
 
 # symbols = symbols.jsut_symbols
 

@@ -1,11 +1,3 @@
-import sys
-sys.path.append('tts')
-sys.path.append('tts/text')
-sys.path.append('vc')
-sys.path.append('vc/infer_pack')
-sys.path.append('llm')
-
-
 from vc import vc_interface
 from tts import tts_interface
 from llm import llm_interface

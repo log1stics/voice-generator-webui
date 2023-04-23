@@ -6,7 +6,7 @@ from langchain.schema import HumanMessage, SystemMessage
 import re
 from typing import List, Union
 
-import template
+from . import template
 
 
 class CustomOutputParser(AgentOutputParser):

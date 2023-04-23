@@ -1,11 +1,3 @@
-import sys
-sys.path.append('modules')
-sys.path.append('tts')
-sys.path.append('tts/text')
-sys.path.append('vc')
-sys.path.append('vc/infer_pack')
-
-
 import gradio as gr
 from vc import vc_interface
 from tts import tts_interface

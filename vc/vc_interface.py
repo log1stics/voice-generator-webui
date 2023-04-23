@@ -2,8 +2,8 @@ import pathlib
 import numpy as np
 import torch
 
-from infer_pack.models import SynthesizerTrnMs256NSFsid, SynthesizerTrnMs256NSFsid_nono
-from vc_infer_pipeline import VC
+from .infer_pack.models import SynthesizerTrnMs256NSFsid, SynthesizerTrnMs256NSFsid_nono
+from .vc_infer_pipeline import VC
 from fairseq import checkpoint_utils
 from scipy.signal import resample
 

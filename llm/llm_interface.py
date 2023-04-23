@@ -3,7 +3,7 @@ from langchain import LLMChain
 from langchain.chat_models import ChatOpenAI
 # from langchain.utilities import WikipediaAPIWrapper
 
-import llm.dialogue_agent as dialogue_agent
+from . import dialogue_agent
 
 
 def set_executor(temperature, max_tokens, prompt, tools, output_parser):
