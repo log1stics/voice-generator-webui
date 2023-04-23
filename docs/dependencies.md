@@ -13,7 +13,7 @@ After execution, add the following to the system environment variable `PHONEMIZE
 
 ![](images/espeak.png)
 
-Note that the environment variable will not be reflected in PowersShell or VSCode until PowersShell or VSCode is restarted.
+Note that environment variables are not reflected in the terminal (PowersShell, VSCode, etc.) until the terminal is restarted.
 
 
 
