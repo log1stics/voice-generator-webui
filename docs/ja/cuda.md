@@ -5,7 +5,7 @@ NVIDIA GPUにグラフィック以外の計算処理をさせるライブラリ�
 
 ## PyTorch
 ディープラーニングをPythonで行うためのライブラリです。  
-CPU版もありますがCUDA(GPU)版の方がはるかに高速です。
+CPU版もありますが今回はCUDA(GPU)版が必要です。
 ```
 pip install torch --index-url https://download.pytorch.org/whl/cu118
 ```
@@ -14,7 +14,8 @@ pip install torch --index-url https://download.pytorch.org/whl/cu118
 ```
 AssertionError: Torch not compiled with CUDA enabled
 ```
-このケースはCPU版のPyTorchをアンインストールする必要があります
+このケースではCPU版のPyTorchが認識されております。  
+CPU版を削除してGPU版をインストールする必要があります
 ```
 pip uninstall torch
 pip install torch --index-url https://download.pytorch.org/whl/cu118
