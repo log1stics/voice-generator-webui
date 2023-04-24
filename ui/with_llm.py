@@ -98,7 +98,7 @@ def ui():
                 presets_dropdown = gr.Dropdown(choices=list(presets.keys()), label="Presets", multiselect=True, value=['ミカ', 'カナ', 'ケン'])
                 
                 prompt = gr.Textbox(label="Prompt", value=default_pr, lines=8)
-                temperature = gr.Slider(minimum=0, maximum=1, step=0.01, label='Temperature', value=0)
+                temperature = gr.Slider(minimum=0, maximum=1, step=0.01, label='Temperature', value=0.8)
                 max_tokens = gr.Slider(minimum=0, maximum=3800, step=1, label='Max Tokens', info='0 means max', value=0)
                 silence_duration = gr.Slider(minimum=0, maximum=4, step=0.1, label='Silence Duration (seconds)', value=0.2)
 
