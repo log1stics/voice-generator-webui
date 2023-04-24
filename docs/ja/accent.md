@@ -17,7 +17,7 @@ VG webuiではアクセントをピッチ(音程)の上昇・下降で表現し�
 
 `続いて、ニュースをお伝えします`
 
-`^ ts u [ z u i t e _ ny u ] u s u o # o [ ts u t a e # sh i [ m a ] s u $`
+`^ ts u [ z u i t e _ ny u ] u s u o # o [ ts u t a e sh i m a ] s u $`
 
 ![](accent.png)
 
