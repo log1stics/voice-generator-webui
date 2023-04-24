@@ -83,6 +83,7 @@ vc/
         └── total_fea.npy # なくても可 (名前はtotal_fea.npy固定)
 ```
 
+### 日本語のアクセントに関しては[こちら](accent.md)
 
 ## For developers
 Here's how to add code to this repo: [Contributing](docs/add_vits.md)
