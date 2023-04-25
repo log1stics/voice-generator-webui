@@ -1,6 +1,7 @@
 # Linked to LLM (ChatGPT, etc.)
 LLM is controlled by LangChain.
 
+![](images/llm.png)
 
 ## If you do not set an API key
 

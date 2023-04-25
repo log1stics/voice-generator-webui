@@ -11,7 +11,7 @@ VITS、RVCを用いた多言語、多話者対応のアクセント調整可能�
 ## 機能
 - 209人分の音声合成(日本語話者 100人 / 英語話者 109人)
 - [LLMを用いた台本生成](how_llm.md)
-- アクセントや音素の編集
+- [アクセントや音素の編集](accent.md)
 - RVCによる音声変換
 - RVCによるバッチ音声変換
 
@@ -83,7 +83,6 @@ vc/
         └── total_fea.npy # なくても可 (名前はtotal_fea.npy固定)
 ```
 
-### 日本語のアクセントに関しては[こちら](accent.md)
 
 ## For developers
 Here's how to add code to this repo: [Contributing](docs/add_vits.md)
