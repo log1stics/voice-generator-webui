@@ -14,7 +14,7 @@ A Multi-speaker, multilingual speech generation tool.
 ## Features
 
 - Speech synthesis for 209 speakers (109 English / 100 Japanese)
-- [Script generation using LLM](how_llm.md)
+- [Script generation using LLM](docs/how_llm.md)
 - Accent and phoneme editing functions
 - Voice conversion by RVC
 - Batch voice conversion by RVC
