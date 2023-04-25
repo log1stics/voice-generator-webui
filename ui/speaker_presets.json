@@ -4,42 +4,47 @@
     "sid": 9,
     "vcid": "No conversion",
     "pitch": -12,
-    "f0method": "pm"
+    "f0method": "pm",
+    "speed": 1
   },
   "カナ": {
     "lang": "ja",
     "sid": 29,
     "vcid": "No conversion",
     "pitch": -12,
-    "f0method": "pm"
+    "f0method": "pm",
+    "speed": 1
   },
   "ケン": {
     "lang": "ja",
     "sid": 11,
     "vcid": "No conversion",
     "pitch": -12,
-    "f0method": "pm"
+    "f0method": "pm",
+    "speed": 1
   },
   "Aaron": {
     "lang": "en",
     "sid": 7,
     "vcid": "No conversion",
     "pitch": -7,
-    "f0method": "harvest"
+    "f0method": "harvest",
+    "speed": 1
   },
   "Dan": {
     "lang": "en",
     "sid": 6,
     "vcid": "No conversion",
     "pitch": -7,
-    "f0method": "harvest"
+    "f0method": "harvest",
+    "speed": 1
   },
   "Helen": {
     "lang": "en",
     "sid": 58,
     "vcid": "No conversion",
     "pitch": -7,
-    "f0method": "harvest"
+    "f0method": "harvest",
+    "speed": 1
   }
-
 }

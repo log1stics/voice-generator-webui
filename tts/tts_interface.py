@@ -38,12 +38,13 @@ def get_text(text, lang, cleaned):
     return clean_text, text_norm
 
 
-def generate_speech(net_g, lang, text, sid, cleaned):
+def generate_speech(net_g, lang, text, sid, cleaned, length_scale):
+    length_scale = 1 / length_scale
     clean_text, stn_tst = get_text(text, lang, cleaned)
     with torch.no_grad():
         x_tst = stn_tst.cuda().unsqueeze(0)
         x_tst_lengths = torch.LongTensor([stn_tst.size(0)]).cuda()
-        audio = net_g.infer(x_tst, x_tst_lengths, sid=torch.LongTensor([sid]).cuda(), noise_scale=.667, noise_scale_w=0.8, length_scale=1)[0][0, 0].data.cpu().float().numpy()
+        audio = net_g.infer(x_tst, x_tst_lengths, sid=torch.LongTensor([sid]).cuda(), noise_scale=.667, noise_scale_w=0.8, length_scale=length_scale)[0][0, 0].data.cpu().float().numpy()
 
     return ' '.join(clean_text), (22050, audio)
 

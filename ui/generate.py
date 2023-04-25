@@ -37,23 +37,23 @@ def vc_change(vcid):
         vc, net_g = vc_interface.get_vc(vcid)
 
 
-def text2speech(lang, text, sid, vcid, pitch, f0method):
-    phonemes, tts_audio = tts_interface.generate_speech(model, lang, text, speaker_list.index(sid), False)
+def text2speech(lang, text, sid, vcid, pitch, f0method, length_scale):
+    phonemes, tts_audio = tts_interface.generate_speech(model, lang, text, speaker_list.index(sid), False, length_scale)
     if vcid != 'No conversion':
         return phonemes, vc_interface.convert_voice(hubert_model, vc, net_g, tts_audio, vcid, pitch, f0method)
 
     return phonemes, tts_audio
 
 
-def acc2speech(lang, text, sid, vcid, pitch, f0method):
-    _, tts_audio = tts_interface.generate_speech(model, lang, text, speaker_list.index(sid), True)
+def acc2speech(lang, text, sid, vcid, pitch, f0method, length_scale):
+    _, tts_audio = tts_interface.generate_speech(model, lang, text, speaker_list.index(sid), True, length_scale)
     if vcid != 'No conversion':
         return vc_interface.convert_voice(hubert_model, vc, net_g, tts_audio, vcid, pitch, f0method)
 
     return tts_audio
 
 
-def save_preset(preset_name, lang_dropdown, sid, vcid, pitch, f0method):
+def save_preset(preset_name, lang_dropdown, sid, vcid, pitch, f0method, speed):
     path = 'ui/speaker_presets.json'
     with open(path, "r", encoding="utf-8") as file:
         data = json.load(file)
@@ -64,6 +64,7 @@ def save_preset(preset_name, lang_dropdown, sid, vcid, pitch, f0method):
     data[preset_name]['vcid'] = vcid
     data[preset_name]['pitch'] = pitch
     data[preset_name]['f0method'] = f0method
+    data[preset_name]['speed'] = speed
 
     # 更新されたデータをJSONファイルに書き込み
     with open(path, "w", encoding="utf-8") as file:
@@ -88,6 +89,7 @@ def ui():
                     inputs=[lang_dropdown],
                     outputs=sid
                 )
+                speed = gr.Slider(minimum=0.1, maximum=2, step=0.1, label='Speed', value=1)
 
                 vcid = gr.inputs.Dropdown(choices=vc_models, label="Voice Conversion", default='No conversion')
                 vcid.change(
@@ -102,18 +104,18 @@ def ui():
                 save_preset_bt = gr.Button("Save Preset")
                 save_preset_bt.click(
                     fn=save_preset,
-                    inputs=[preset_name, lang_dropdown, sid, vcid, pitch, f0method],
+                    inputs=[preset_name, lang_dropdown, sid, vcid, pitch, f0method, speed],
                 )
 
         with gr.Row():
             output_audio = gr.Audio(label="Output Audio", type='numpy')
             text2speech_bt.click(
                 fn=text2speech,
-                inputs=[lang_dropdown, text, sid, vcid, pitch, f0method],
+                inputs=[lang_dropdown, text, sid, vcid, pitch, f0method, speed],
                 outputs=[phonemes, output_audio]
             )
             acc2speech_bt.click(
                 fn=acc2speech,
-                inputs=[lang_dropdown, phonemes, sid, vcid, pitch, f0method],
+                inputs=[lang_dropdown, phonemes, sid, vcid, pitch, f0method, speed],
                 outputs=[output_audio]
             )

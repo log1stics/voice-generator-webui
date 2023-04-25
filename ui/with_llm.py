@@ -31,7 +31,7 @@ def generate_dialogues(dialogues, selected_presets, llm_output, silence_duration
                 vc, net_g = vc_interface.get_vc(preset['vcid'])
 
             for key in dialogues[preset_name]:
-                phonemes, audio = tts_interface.generate_speech(model, preset['lang'], dialogues[preset_name][key], int(preset['sid']), False)
+                phonemes, audio = tts_interface.generate_speech(model, preset['lang'], dialogues[preset_name][key], int(preset['sid']), False, preset['speed'])
                 # Scale float32 samples to int16 range
                 scaled_audio = (audio[1] * 32767).astype(np.int16)
                 audio = (audio[0], scaled_audio)
@@ -95,7 +95,7 @@ def ui():
         gr.Markdown(top)
         with gr.Row():
             with gr.Column():
-                presets_dropdown = gr.Dropdown(choices=list(presets.keys()), label="Presets", multiselect=True, value=['ミカ', 'カナ', 'ケン'])
+                presets_dropdown = gr.Dropdown(choices=list(presets.keys()), label="Presets", multiselect=True, value=['ミカ', 'カナ', 'ケン'], info='need restart to reload')
                 
                 prompt = gr.Textbox(label="Prompt", value=default_pr, lines=8)
                 temperature = gr.Slider(minimum=0, maximum=1, step=0.01, label='Temperature', value=0.8)
