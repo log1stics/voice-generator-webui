@@ -20,7 +20,7 @@ def start_batch(input_dir, output_dir, vcid, pitch, f0method):
 def ui():
     with gr.TabItem('Batch'):
         with gr.Row():
-            input_dir = gr.Textbox(label="Input Directory", value="path/to/dir", interactive=True, info='need wav files')
+            input_dir = gr.Textbox(label="Input Folder", value="path/to/dir", interactive=True, info='need wav files')
 
         with gr.Row():
             with gr.Column():
@@ -28,7 +28,7 @@ def ui():
 
                 pitch = gr.Slider(minimum=-12, maximum=12, step=1, label='Pitch', value=0)
                 f0method = gr.Radio(label="Pitch Method pm: speed-oriented, harvest: accuracy-oriented", choices=["pm", "harvest"], value="pm")
-                output_dir = gr.Textbox(label="Output Directory", value="path/to/dir", interactive=True)
+                output_dir = gr.Textbox(label="Output Folder", value="path/to/dir", interactive=True)
 
                 generate_bt = gr.Button("Start Conversion", variant="primary")
                 generate_bt.click(
