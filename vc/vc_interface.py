@@ -121,9 +121,11 @@ def convert_voice(hubert_model, model, net_g, input_audio, vcid, f0_up_key, f0_m
 
 def batch_convert(input_dir, output_dir, hubert_model, model, net_g, vcid, f0_up_key, f0_method):
     for wav_path in pathlib.Path(input_dir).glob("*.wav"):
-        audio = load_wav(wav_path)
+        print(f'Converting {wav_path}')
+        audio = wavfile.read(wav_path)
         sr, output_audio = convert_voice(hubert_model, model, net_g, audio, vcid, f0_up_key, f0_method)
         wavfile.write(f'{output_dir}/{wav_path.name}', sr, output_audio)
+    print('Done')
 
 # silence_duration is measured in float seconds
 def concat_audio(audio_data, silence_duration):

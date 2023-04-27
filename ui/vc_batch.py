@@ -20,14 +20,8 @@ def start_batch(input_dir, output_dir, vcid, pitch, f0method):
 def ui():
     with gr.TabItem('Batch'):
         with gr.Row():
-            # with gr.Column():
-            # input_dir = gr.File(label="音声ファイルのあるディレクトリ", file_count='directory')
-            input_dir = gr.Textbox(label="Input Directory", value="path/to/dir", interactive=True)
-            # input_dir.upload(
-            #     fn=sam,
-            #     inputs=[input_dir],
-            #     outputs=[gr.File(label="出力ファイル", file_count='directory')]
-            # )
+            input_dir = gr.Textbox(label="Input Directory", value="path/to/dir", interactive=True, info='need wav files')
+
         with gr.Row():
             with gr.Column():
                 vcid = gr.inputs.Dropdown(choices=vc_models, label="Voice Conversion", default='No conversion')
@@ -39,6 +33,5 @@ def ui():
                 generate_bt = gr.Button("Start Conversion", variant="primary")
                 generate_bt.click(
                     fn=start_batch,
-                    inputs=[input_dir, output_dir, vcid, pitch, f0method],
-                    # outputs=[phonemes, gr.Audio(label="出力オーディオ", type='numpy')]
+                    inputs=[input_dir, output_dir, vcid, pitch, f0method]
                 )
