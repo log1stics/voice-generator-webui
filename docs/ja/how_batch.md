@@ -1,5 +1,5 @@
 # バッチ変換
-フォルダ内のwavをファイルを一括でRVC変換します。
+フォルダ内のwavファイルを一括でRVC変換します。
 
 
 Input Folder内のwavファイルをすべてOutput Folderへ変換し保存します。  
