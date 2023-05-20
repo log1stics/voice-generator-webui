@@ -6,6 +6,5 @@ fairseq
 praat-parselmouth
 faiss-cpu
 pyworld
-espnet
 numpy>=1.23.5
 langchain==0.0.142
