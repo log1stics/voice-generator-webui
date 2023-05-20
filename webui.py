@@ -1,5 +1,5 @@
 import gradio as gr
-from ui import themes, generate, vc_batch, with_llm, settings
+from ui import themes, generate, generate_with_espnet, vc_batch, with_llm, settings
 import argparse
 
 
@@ -21,6 +21,7 @@ with gr.Blocks(theme=seafoam) as app:
     gr.Markdown(top)
     with gr.Tabs():
         generate.ui()
+        generate_with_espnet.ui()
         with_llm.ui()
         vc_batch.ui()
         settings.ui()
