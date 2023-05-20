@@ -44,7 +44,6 @@ def text2speech(text, vcid, pitch, f0method, length_scale):
 
 def ui():
     with gr.TabItem('ESPnet'):
-        gr.Markdown('`pip install espnet`が必要\nアクセント編集不可だが発音の精度が良い')
         with gr.Row():
             with gr.Column(scale=2):
                 text = gr.Textbox(label="Text", value="こんにちは、世界", lines=8)
