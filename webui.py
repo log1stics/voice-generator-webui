@@ -1,5 +1,5 @@
 import gradio as gr
-from ui import themes, generate, generate_with_espnet, vc_batch, with_llm, settings
+from ui import themes, generate, vc_batch, with_llm, settings
 import argparse
 
 
@@ -10,7 +10,6 @@ iscolab = parser.parse_args().colab
 with gr.Blocks(themes.Seafoam()) as app:
     with gr.Tabs():
         generate.ui()
-        generate_with_espnet.ui()
         with_llm.ui()
         vc_batch.ui()
         settings.ui()
